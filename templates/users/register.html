@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Add user{% endblock title %}
+{% block form_heading %}Add a new user form{% endblock form_heading %}
+{% block content %}
+    <form method="POST" action="{% url 'register' %}" class="form-signup">
+        {% csrf_token %}
+        <div class="form-group mb-4">
+            <label class="sr-only">First Name</label>
+            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" required>
+        </div>
+        <div class="form-group mb-4">
+            <label  class="sr-only">Last Name</label>
+            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" required>
+        </div>
+        <div class="form-group">
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+        </div>
+        <div class="form-group mb-4">
+            <label class="sr-only">Enter Password</label>
+            <input type="password" name="password1" id="password1" class="form-control" placeholder="Enter Password" required>
+        </div>
+        <div class="form-group mb-4">
+            <label class="sr-only">Confirm Password</label>
+            <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm Password" required>
+        </div>
+        <select name="access" autofocus>
+            <option value="standard">Select a privilege level for the user</option>
+            <option value="standard">Standard User</option>
+            <option value="admin">Administrator</option>
+        </select>
+        <button class="btn btn-block btn btn-dark" type="submit">Add user</button>
+    </form>
+{% endblock %}

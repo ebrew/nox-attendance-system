@@ -1,0 +1,41 @@
+{% extends "icps/icps_report_base.html" %}
+{% block title %}Detailed Attendance Report on {{ user }} - {{ title }}{% endblock title %}
+
+{% block content %}
+ <div class="col-md-12">
+ <div class="container" style="text-align: center">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Attendance Reports on</h1>
+        <h1 class="display-4">{{user}}</h1>
+        <h2 class="display-4"> {{ title }} </h2>
+      </div>
+    </div>
+</div>
+
+  <div class="table-responsive">
+         <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+            <thead>
+                <th><input type="checkbox" id="checkall" /></th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Hours Worked</th>
+                <th>Arrival Time</th>
+                <th>Departure Time</th>
+            </thead>
+     <tbody>
+   {% for user in employee %}
+    <tr>
+     <td><input type="checkbox" class="checkthis" /></td>
+     <td>{{ user }}</td>
+     <td>{{ user.date }}</td>
+     <td>{{ user.w_hours }}</td>
+     <td>{{ user.timein }}</td>
+     <td>{{ user.timeout }}</td>
+    </tr>
+   {% endfor %}
+   </tbody>
+  </table>
+        </div>
+ </div>
+{% endblock content %}

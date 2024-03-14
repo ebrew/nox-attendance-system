@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock title %}
+{% block form_heading %}Upload an exported file{% endblock form_heading %}
+{% block content %}
+    <form method="POST" action="{% url 'upload_file' %}" enctype="multipart/form-data" class="form-signup">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="file"
+                   title="Upload excel file"
+                   name="excel_file"
+                   style="border: 3px solid black; padding: 8px;"
+                   required="required"
+                   autofocus
+            >
+        </div>
+        <select name="area" autofocus>
+            <option value="none">Select a subsidiary (branch) to upload to</option>
+            <option value="head office">Head Office</option>
+            <option value="icps">ICPS</option>
+        </select>
+        <button style="border: 3px solid black; padding: 8px;"
+                class="btn btn-block btn btn-dark"
+                type="submit">Upload
+        </button>
+    </form>
+{#    <a href="{% url 'options'%}" style="padding: 8px;" class="forgot-password-link">Report Generation?</a>#}
+{#    <p class="login-card-footer-text">Want to add a new user? <a href="{% url 'register' %}" class="text-reset">Add here</a></p>#}
+{% endblock %}
